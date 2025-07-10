@@ -1,0 +1,24 @@
+[project]
+name = "internet_search"
+version = "0.1.0"
+description = "internet_search is a multi-agent system that uses A2A communication to perform internet searches."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "click>=8.2.0",
+    "geopy>=2.4.1",
+    "google-adk>=1.0.0",
+    "gradio>=5.30.0",
+    "langchain-google-genai>=2.1.5",
+    "langchain-ollama>=0.3.3",
+    "langchain-mcp-adapters>=0.1.0",
+    "langchain-google-vertexai>=2.0.24",
+    "langgraph>=0.4.5",
+    "mcp>=1.5.0",
+    "termcolor>=1.1.0",
+    "duckduckgo-search>=0.6.0",
+    "a2a-sdk>=0.2.9",
+]
+
+[tool.uv.sources]
+a2a-samples = { workspace = true }

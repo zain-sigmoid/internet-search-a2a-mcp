@@ -16,11 +16,11 @@ from a2a.types import (
 # from agents.airbnb_planner_multiagent.internet_search.internet_search_agent import (
 #     InternetSearchAgent,
 # )
-from .is_search_agent import (
+from is_search_agent import (
     create_is_agent,
 )
 
-from .internet_search_agent_executor import (
+from internet_search_agent_executor import (
     ISAgentExecutor,
 )
 

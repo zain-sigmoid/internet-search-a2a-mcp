@@ -14,7 +14,7 @@ from a2a.types import (
 )
 from google.genai import types
 
-from .internet_search_agent import (
+from internet_search_agent import (
     InternetSearchAgent,
 )
 

@@ -13,7 +13,6 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 
 # Copy only pyproject.toml and other metadata first to leverage Docker cache
 COPY pyproject.toml ./
-COPY uv.lock ./
 
 # Install dependencies
 RUN uv synv

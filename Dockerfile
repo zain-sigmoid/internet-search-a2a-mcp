@@ -2,25 +2,26 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install curl and install uv to /root/.local/bin
+# Install curl and uv
 RUN apt-get update && \
     apt-get install -y curl && \
     curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Add uv to PATH
-ENV PATH="/root/.local/bin:${PATH}"
+ENV PATH="/root/.local/bin:$PATH"
+ENV PORT=10003
 
-# Copy only dependency files first
+# Copy pyproject + lockfile
 COPY pyproject.toml ./
 
 # Install dependencies
 RUN uv sync
 
-# Copy the rest of the app
+# Copy entire project
 COPY . .
 
-# Expose port
-EXPOSE 10003
+# Expose app port
+EXPOSE ${PORT}
 
-# Run the app
-CMD ["uv", "run", "."]
+# Use uv to run the Python file directly
+CMD ["uv", "run", "server_railway.py"]

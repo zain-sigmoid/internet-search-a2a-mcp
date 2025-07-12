@@ -14,6 +14,7 @@ def duck_duck_go(query: str) -> str:
     """Searching the web using DuckDuckGo."""
     with DDGS() as ddgs:
         results = ddgs.text(query, max_results=3)
+        print("results", results)
         return [r["body"] for r in results]
 
 

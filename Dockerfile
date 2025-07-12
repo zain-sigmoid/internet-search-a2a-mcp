@@ -14,7 +14,7 @@ ENV PATH="/root/.local/bin:${PATH}"
 COPY pyproject.toml ./
 
 # Install dependencies
-RUN uv synv
+RUN uv sync
 
 # Copy the rest of the app
 COPY . .

@@ -1,7 +1,7 @@
 [project]
 name = "internet_search"
 version = "0.1.0"
-description = "Internet Search Agent for searching and retrieving information"
+description = "internet search MCP server"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -19,6 +19,8 @@ dependencies = [
     "duckduckgo-search>=0.6.0",
     "a2a-sdk>=0.2.9",
     "uvicorn>=0.22.0",
+    "langchain-community>=0.0.1",
+    "langchain-tavily>=0.1.0",
 ]
 
 [tool.uv.sources]

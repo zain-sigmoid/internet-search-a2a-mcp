@@ -30,10 +30,14 @@ def duck_duck_go(query: str) -> str:
 @mcp.tool(name="tavily", description="Premium web search using Tavily")
 def tavily_search(query: str) -> str:
     """Searching the web using Tavily."""
-    tavily = TavilySearch(max_results=3)
-    results = tavily.invoke({"query": query})
-    print("tavily results", results)
-    return results
+    try:
+        tavily = TavilySearch(max_results=3)
+        results = tavily.invoke({"query": query})
+        print("tavily results", results, flush=True)
+        return results
+    except Exception as e:
+        print("Tavily tool failed:", e, flush=True)
+        return "Tavily failed to return results"
 
 
 if __name__ == "__main__":

@@ -1,9 +1,9 @@
 [project]
-name = "internet_search"
+name = "internet_search_agent"
 version = "0.1.0"
-description = "internet_search is a multi-agent system that uses A2A communication to perform internet searches."
+description = "An agent that performs internet searches using DuckDuckGo and Google"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.11"
 dependencies = [
     "click>=8.2.0",
     "geopy>=2.4.1",
@@ -21,4 +21,4 @@ dependencies = [
 ]
 
 [tool.uv.sources]
-a2a-samples = { workspace = true }
+internet_search = { workspace = true }

@@ -93,4 +93,8 @@ def resilient_search(query: str) -> str:
 if __name__ == "__main__":
     logging.info("Starting the Internet Search MCP server...")
     # mcp.run(transport="sse")
-    mcp.run(transport="stdio")
+    try:
+        mcp.run(transport="stdio")
+    except Exception as e:
+        logging.error(f"Error running MCP server: {e}")
+        traceback.print_exc()

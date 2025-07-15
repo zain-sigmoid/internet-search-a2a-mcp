@@ -22,6 +22,20 @@ mcp = FastMCP(
 )
 
 
+@mcp.tool(name="duckduckgo", description="Free web search using DuckDuckGo")
+def duck_duck_go(query: str) -> str:
+    """Searching the web using DuckDuckGo."""
+    logging.info(f"🔍 Searching using DuckDuckGo")
+    # with DDGS() as ddgs:
+    #     results = ddgs.text(query, max_results=3)
+    #     print("results", results)
+    #     return [r["body"] for r in results]
+    duckduckgo = DuckDuckGoSearchRun()
+    results = duckduckgo.run(query)
+    print("results", results)
+    return results
+
+
 @mcp.tool(
     name="resilient_search",
     description="Search using fallback chain: DuckDuckGo → Tavily → Serper → Exa.",
@@ -65,19 +79,6 @@ def resilient_search(query: str) -> str:
     return "❌ All tools failed. Please try again later."
 
 
-# @mcp.tool(name="duckduckgo", description="Free web search using DuckDuckGo")
-# def duck_duck_go(query: str) -> str:
-#     """Searching the web using DuckDuckGo."""
-#     # with DDGS() as ddgs:
-#     #     results = ddgs.text(query, max_results=3)
-#     #     print("results", results)
-#     #     return [r["body"] for r in results]
-#     duckduckgo = DuckDuckGoSearchRun()
-#     results = duckduckgo.run(query)
-#     print("results", results)
-#     return results
-
-
 # @mcp.tool(name="tavily", description="Premium web search using Tavily")
 # def tavily_search(query: str) -> str:
 #     """Searching the web using Tavily."""
@@ -96,6 +97,7 @@ if __name__ == "__main__":
     # mcp.run(transport="sse")
     try:
         mcp.run(transport="stdio")
+        logging.info("MCP server is running.")
     except Exception as e:
         logging.error(f"Error running MCP server: {e}")
         traceback.print_exc()

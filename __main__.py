@@ -95,6 +95,7 @@ def main(host: str = DEFAULT_HOST, port: int = DEFAULT_PORT):
         skills=[skill],
     )
     adk_agent = create_is_agent()
+    logging.info(f"Created agent: {adk_agent}")
     runner = Runner(
         app_name=agent_card.name,
         agent=adk_agent,

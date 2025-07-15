@@ -26,7 +26,7 @@ if TYPE_CHECKING:
 
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.INFO)
 
 # Constants
 DEFAULT_USER_ID = "self"
@@ -94,6 +94,7 @@ class ISAgentExecutor(AgentExecutor):
         context: RequestContext,
         event_queue: EventQueue,
     ):
+        logging.info("inside internet search agent executor")
         # Run the agent until either complete or the task is suspended.
         updater = TaskUpdater(event_queue, context.task_id, context.context_id)
         # Immediately notify that the task is submitted.
@@ -120,13 +121,13 @@ class ISAgentExecutor(AgentExecutor):
         session_id = context.context_id
         if session_id in self._active_sessions:
             logger.info(
-                f"Cancellation requested for active weather session: {session_id}"
+                f"Cancellation requested for internet search session: {session_id}"
             )
             # TODO: Implement proper cancellation when ADK supports it
             self._active_sessions.discard(session_id)
         else:
             logger.debug(
-                f"Cancellation requested for inactive weather session: {session_id}"
+                f"Cancellation requested for inactive internet session: {session_id}"
             )
 
         raise ServerError(error=UnsupportedOperationError())

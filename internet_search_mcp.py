@@ -30,6 +30,7 @@ def resilient_search(query: str) -> str:
     SERP_API = os.getenv("SERP_API")
     # EXA_API = os.getenv("EXA_API")
     timeout = 5
+    logging.info(f"🔍 inside resilient tool, Searching for: {query}")
 
     def try_with_timeout(func, query):
         with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
@@ -59,6 +60,7 @@ def resilient_search(query: str) -> str:
             print(f"❌ {name} failed: {e}")
             print(traceback.format_exc())
 
+    logging.error("❌ All tools failed. Please try again later.")
     return "❌ All tools failed. Please try again later."
 
 
@@ -89,6 +91,6 @@ def resilient_search(query: str) -> str:
 
 
 if __name__ == "__main__":
-    # print("Starting the Internet Search MCP server...")
+    logging.info("Starting the Internet Search MCP server...")
     # mcp.run(transport="sse")
     mcp.run(transport="stdio")

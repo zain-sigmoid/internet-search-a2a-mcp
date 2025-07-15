@@ -7,7 +7,8 @@ import concurrent.futures
 import time
 import traceback
 from langchain_community.utilities import GoogleSerperAPIWrapper
-from langchain_exa import ExaSearchResults
+
+# from langchain_exa import ExaSearchResults
 import logging
 
 logging.basicConfig(level=logging.INFO)
